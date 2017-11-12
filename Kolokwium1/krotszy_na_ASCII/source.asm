@@ -44,7 +44,7 @@ ptl:
 	dec edi
 	cmp edi, 0
 	jz kolejny_bajt
-	jmp ptl
+	jmp ptl ;t
 
 koniec:
 	shr al , 3
