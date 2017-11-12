@@ -5,15 +5,13 @@ extern _ExitProcess@4 : PROC
 extern __write : PROC
 public _main
 
-.data
-
-;tekst db 00001010b, 11011111b, 10110101b, 00010110b, 01110100b, 11011001b, 01010111b, 00111010b, 01001000b, 00100000b
- tekst db 01000001b, 00001100b, 00000000b
-wynik db 10 dup (?)
+.data	      
+ tekst db 01100001b, 10111101b, 10101101b, 11001010b , 10100100b, 10111011b, 10101100b , 01001001b, 01100101b, 00000000b
+ wynik db 20 dup (?)
 
 .code
 
-; ZAD 2
+;-----------ZAD 2------------;
 pobierz5bitow PROC
 	push ebp
 	push ecx
@@ -57,13 +55,58 @@ koniec:
 	ret
 pobierz5bitow ENDP
 
+;-----------ZAD 2 END------------;
+
+
 _main:
+;-----------ZAD 1------------;
+	xor ecx, ecx ;przesuniêcie  w bajcie
+	mov esi, offset tekst ;adres pocz¹tku przetwarzanego tekstu
+	mov edi, offset wynik ;adres pocz¹tku teksu wynikowego
 
-	mov esi , offset tekst + 1
-	mov ecx , 2
+	push edi ;zapamiêtanie adresu pocz¹tku tekstu
+
+nastepne_5_bitow:
 	call pobierz5bitow
-	nop
 
-call _ExitProcess@4
+	cmp al, 0
+	jz dalej
+
+	cmp al, 27
+	jnz nie_spacja
+	mov al, 20h
+	jmp dalej
+
+nie_spacja:
+	add al , 60h
+
+dalej:
+	mov [edi] , al
+	inc edi
+	cmp al, 0
+	jz koniec_tekstu
+	
+	add ecx, 5
+	cmp ecx, 7
+	jna nastepne_5_bitow
+	inc esi ;nastepny bajt tekstu Ÿród³owego
+	sub ecx, 8; ustawiamy przesuniêcie w nowym bajcie Ÿród³owym
+
+	jmp nastepne_5_bitow
+
+koniec_tekstu:
+	mov [edi] , byte PTR 0
+	pop edi
+;-----------ZAD 1 END------------;
+
+	push dword PTR 20
+	push offset wynik
+	push dword PTR 1
+
+	call __write
+	add esp , 12
+
+	push 0
+	call _ExitProcess@4
 
 END
