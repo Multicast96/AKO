@@ -1,4 +1,4 @@
-ï»¿.686
+.686
 .model flat
 
 extern _ExitProcess@4 : PROC
@@ -8,20 +8,21 @@ public _main
 .data	      
  tekst db 01100001b, 10111101b, 10101101b, 11001010b , 10100100b, 10111011b, 10101100b , 01001001b, 01100101b, 00000000b
  wynik db 20 dup (?)
+ obszar dw 2 dup(?)
 
 .code
 
 ;-----------ZAD 2------------;
-pobierz5bitow PROC
+pobierz5bitow PROC 
 	push ebp
 	push ecx
 	push edx
 	push edi
 	
-	;ecx przesuniÄ™cie od prawej
+	;ecx przesuniecie od prawej
 	;esi adres bajtu z danymi
-	mov ebp, 5 ;iloÅ›Ä‡ bitÃ³w do pobrania
-	movzx ecx , cl ;wyzerowanie ecx, oprÃ³cz cl
+	mov ebp, 5 ;iloœæ bitów do pobrania
+	movzx ecx , cl ;wyzerowanie ecx, oprócz cl
 	mov edx , 0FFFFFFFFh ;indeks kolejnego bajtu do pobrania
 	xor eax, eax ;5 bitowy wynik
 
@@ -32,7 +33,7 @@ kolejny_bajt:
 	mov bl, [esi+edx]
 	shr bl , cl
 	sub edi, ecx
-	xor ecx, ecx ;wyzerowanie przesuniÄ™cia
+	xor ecx, ecx ;wyzerowanie przesuniêcia
 
 ptl:
 	shr bl, 1
@@ -44,7 +45,7 @@ ptl:
 	dec edi
 	cmp edi, 0
 	jz kolejny_bajt
-	jmp ptl ;t
+	jmp ptl
 
 koniec:
 	shr al , 3
@@ -60,11 +61,11 @@ pobierz5bitow ENDP
 
 _main:
 ;-----------ZAD 1------------;
-	xor ecx, ecx ;przesuniÄ™cie  w bajcie
-	mov esi, offset tekst ;adres poczÄ…tku przetwarzanego tekstu
-	mov edi, offset wynik ;adres poczÄ…tku teksu wynikowego
+	xor ecx, ecx ;przesuniêcie  w bajcie
+	mov esi, offset tekst ;adres pocz¹tku przetwarzanego tekstu
+	mov edi, offset wynik ;adres pocz¹tku teksu wynikowego
 
-	push edi ;zapamiÄ™tanie adresu poczÄ…tku tekstu
+	push edi ;zapami?tanie adresu pocz?tku tekstu
 
 nastepne_5_bitow:
 	call pobierz5bitow
@@ -89,8 +90,8 @@ dalej:
 	add ecx, 5
 	cmp ecx, 7
 	jna nastepne_5_bitow
-	inc esi ;nastepny bajt tekstu ÅºrÃ³dÅ‚owego
-	sub ecx, 8; ustawiamy przesuniÄ™cie w nowym bajcie ÅºrÃ³dÅ‚owym
+	inc esi ;nastepny bajt tekstu Ÿród³owego
+	sub ecx, 8; ustawiamy przesuniêcie w nowym bajcie Ÿród³owym
 
 	jmp nastepne_5_bitow
 
@@ -105,6 +106,14 @@ koniec_tekstu:
 
 	call __write
 	add esp , 12
+
+;-----------ZAD 3------------;
+	mov ecx, offset obszar
+	mov word PTR obszar, cx
+	shr ecx, 16
+	mov word PTR obszar + 2, cx
+;-----------ZAD 3 END------------;
+
 
 	push 0
 	call _ExitProcess@4
