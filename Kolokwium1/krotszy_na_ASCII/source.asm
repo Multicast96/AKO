@@ -1,4 +1,4 @@
-.686
+ï»¿.686
 .model flat
 
 extern _ExitProcess@4 : PROC
@@ -18,10 +18,10 @@ pobierz5bitow PROC
 	push edx
 	push edi
 	
-	;ecx przesuniêcie od prawej
+	;ecx przesuniÄ™cie od prawej
 	;esi adres bajtu z danymi
-	mov ebp, 5 ;iloœæ bitów do pobrania
-	movzx ecx , cl ;wyzerowanie ecx, oprócz cl
+	mov ebp, 5 ;iloÅ›Ä‡ bitÃ³w do pobrania
+	movzx ecx , cl ;wyzerowanie ecx, oprÃ³cz cl
 	mov edx , 0FFFFFFFFh ;indeks kolejnego bajtu do pobrania
 	xor eax, eax ;5 bitowy wynik
 
@@ -32,7 +32,7 @@ kolejny_bajt:
 	mov bl, [esi+edx]
 	shr bl , cl
 	sub edi, ecx
-	xor ecx, ecx ;wyzerowanie przesuniêcia
+	xor ecx, ecx ;wyzerowanie przesuniÄ™cia
 
 ptl:
 	shr bl, 1
@@ -60,11 +60,11 @@ pobierz5bitow ENDP
 
 _main:
 ;-----------ZAD 1------------;
-	xor ecx, ecx ;przesuniêcie  w bajcie
-	mov esi, offset tekst ;adres pocz¹tku przetwarzanego tekstu
-	mov edi, offset wynik ;adres pocz¹tku teksu wynikowego
+	xor ecx, ecx ;przesuniÄ™cie  w bajcie
+	mov esi, offset tekst ;adres poczÄ…tku przetwarzanego tekstu
+	mov edi, offset wynik ;adres poczÄ…tku teksu wynikowego
 
-	push edi ;zapamiêtanie adresu pocz¹tku tekstu
+	push edi ;zapamiÄ™tanie adresu poczÄ…tku tekstu
 
 nastepne_5_bitow:
 	call pobierz5bitow
@@ -89,8 +89,8 @@ dalej:
 	add ecx, 5
 	cmp ecx, 7
 	jna nastepne_5_bitow
-	inc esi ;nastepny bajt tekstu Ÿród³owego
-	sub ecx, 8; ustawiamy przesuniêcie w nowym bajcie Ÿród³owym
+	inc esi ;nastepny bajt tekstu ÅºrÃ³dÅ‚owego
+	sub ecx, 8; ustawiamy przesuniÄ™cie w nowym bajcie ÅºrÃ³dÅ‚owym
 
 	jmp nastepne_5_bitow
 
