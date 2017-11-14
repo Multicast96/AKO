@@ -21,8 +21,8 @@ pobierz5bitow PROC
 	
 	;ecx przesuniecie od prawej
 	;esi adres bajtu z danymi
-	mov ebp, 5 ;iloœæ bitów do pobrania
-	movzx ecx , cl ;wyzerowanie ecx, oprócz cl
+	mov ebp, 5 ;iloî°« bité—š do pobrania
+	movzx ecx , cl ;wyzerowanie ecx, opré‚z cl
 	mov edx , 0FFFFFFFFh ;indeks kolejnego bajtu do pobrania
 	xor eax, eax ;5 bitowy wynik
 
@@ -33,7 +33,7 @@ kolejny_bajt:
 	mov bl, [esi+edx]
 	shr bl , cl
 	sub edi, ecx
-	xor ecx, ecx ;wyzerowanie przesuniêcia
+	xor ecx, ecx ;wyzerowanie przesuniç’šia
 
 ptl:
 	shr bl, 1
@@ -61,9 +61,9 @@ pobierz5bitow ENDP
 
 _main:
 ;-----------ZAD 1------------;
-	xor ecx, ecx ;przesuniêcie  w bajcie
-	mov esi, offset tekst ;adres pocz¹tku przetwarzanego tekstu
-	mov edi, offset wynik ;adres pocz¹tku teksu wynikowego
+	xor ecx, ecx ;przesuniç’šie  w bajcie
+	mov esi, offset tekst ;adres poczé–ku przetwarzanego tekstu
+	mov edi, offset wynik ;adres poczé–ku teksu wynikowego
 
 	push edi ;zapami?tanie adresu pocz?tku tekstu
 
@@ -90,8 +90,8 @@ dalej:
 	add ecx, 5
 	cmp ecx, 7
 	jna nastepne_5_bitow
-	inc esi ;nastepny bajt tekstu Ÿród³owego
-	sub ecx, 8; ustawiamy przesuniêcie w nowym bajcie Ÿród³owym
+	inc esi ;nastepny bajt tekstu î¶°éšé€™wego
+	sub ecx, 8; ustawiamy przesuniç’šie w nowym bajcie î¶°éšé€™wym
 
 	jmp nastepne_5_bitow
 
