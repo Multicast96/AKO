@@ -8,7 +8,7 @@ public _main
 .data	      
  tekst db 01100001b, 10111101b, 10101101b, 11001010b , 10100100b, 10111011b, 10101100b , 01001001b, 01100101b, 00000000b
  wynik db 20 dup (?)
- obszar dw 2 dup(?)
+ obszar dw 2 dup(?) 
 
 .code
 
@@ -31,7 +31,7 @@ kolejny_bajt:
 	mov edi , 8
 	xor ebx, ebx ;przetwarzany bajt
 	mov bl, [esi+edx]
-	shr bl , cl
+	shr bl , cl 
 	sub edi, ecx
 	xor ecx, ecx ;wyzerowanie przesuniêcia
 
@@ -65,7 +65,7 @@ _main:
 	mov esi, offset tekst ;adres pocz¹tku przetwarzanego tekstu
 	mov edi, offset wynik ;adres pocz¹tku teksu wynikowego
 
-	push edi ;zapami?tanie adresu pocz?tku tekstu
+	push edi ;zapamiêtanie adresu pocz¹tku tekstu
 
 nastepne_5_bitow:
 	call pobierz5bitow
@@ -108,10 +108,8 @@ koniec_tekstu:
 	add esp , 12
 
 ;-----------ZAD 3------------;
-	mov ecx, offset obszar
-	mov word PTR obszar, cx
-	shr ecx, 16
-	mov word PTR obszar + 2, cx
+	mov eax, offset obszar
+	mov [eax], eax
 ;-----------ZAD 3 END------------;
 
 
