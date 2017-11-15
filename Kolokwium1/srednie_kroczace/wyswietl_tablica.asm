@@ -4,7 +4,7 @@
 	extern __write : PROC
 	public _main
 .data
-	wynik_srednie dw 100, 64, 65, 10
+	wynik_srednie dw 100, 64, 50 dup(0)
 	wynik_tekst db 50 dup(' '),10,0
 .code
 
