@@ -1,6 +1,8 @@
-dane db 7, 21, 2, 10, 11, 1, 2, 2, 25, 7 
+dane dw 7, 21, 2, 10, 11, 1, 2, 2, 25, 7 
 
 n=4 k=2
 iloœæ pomiarów = 10
 Dane dobrane tak aby œrednie wychodzi³y ca³kowite :D
 wynik_srednie 10, 6, 4, 9
+
+w wyswietl_tablica.asm jest podprogram do wyœwietlenia w konsoli liczb z tablicy.
