@@ -7,8 +7,9 @@
 
 .data
 
-dane db 11101010b, 01001000b, 01101101b, 00000010b, 0011010b, 11101111b, 00000100b, 00010000b, 00000000b
+dane db 11101010b, 01001000b, 01101101b, 00000010b, 0011010b, 11101111b, 00000100b, 00010000b, 01000000b , 00000000b
 wynik db 15 dup(?)
+
 Sty dd 255,256
 Lut dw 16,17,18,19
 Mar db 8,9,10,11
@@ -58,7 +59,7 @@ _main:
 	mov edi , offset wynik
 	call uuencode
 
-	push 10
+	push 11
 	push edi
 	push 1
 	call __write
