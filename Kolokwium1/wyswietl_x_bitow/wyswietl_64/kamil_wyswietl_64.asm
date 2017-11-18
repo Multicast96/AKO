@@ -5,8 +5,6 @@ public _wyswietl64
 	extern __write : PROC
 .data
 
-liczba db 24 dup(' '),10,0
-dzielnik dd 10
 .code
 	_wyswietl64 PROC
 		;prolog
