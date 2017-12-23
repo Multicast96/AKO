@@ -2,10 +2,10 @@
 #include<Windows.h>
 
 int roznica(int *odejmna, int **odejmnik);
-int *kopia_tablicy(int tabl[],unsigned int n);char *komunikat(char * tekst);int *szukaj_elem_min(int tablica[], int n);
+int *kopia_tablicy(int tabl[],unsigned int n);char *komunikat(char * tekst);int *szukaj_elem_min(int tablica[], int n);void szyfruj(char * tekst);
 int main() {
 	printf("**********ZAD1********\n");
-	int a = 20, b = 25;
+	int a = 75, b = 25;
 	int **wsk = &b;
 	printf("%d - %d = %d\n", a, b, roznica(&a, &wsk));
 
@@ -18,13 +18,19 @@ int main() {
 	free(kopia);
 
 	printf("**********ZAD3********\n");
-	char *tekst = "Przepelnienie stosu, niestety nie zdajesz. :( \n", *komunikat_tekst = komunikat(tekst);
+	char tekst[] = "Przepelnienie stosu, niestety nie zdajesz. :( \n", *komunikat_tekst = komunikat(tekst);
 	printf("%s\n", komunikat_tekst);
 	free(komunikat_tekst);
 
 	printf("**********ZAD4********\n");
-	int pomiary[] = { -2,4,123,-32414,2335,-423,1253 }, *min = szukaj_elem_min(pomiary, sizeof(pomiary)/sizeof(int));
+	int pomiary[] = { 1,4,123,-32414,2335,-423,1253 }, *min = szukaj_elem_min(pomiary, sizeof(pomiary)/sizeof(int));
 	printf("Element minimalny = %d\n",*min);
+
+	printf("**********ZAD5********\n");
+	char szyfrogram[] = "Zyrafy wchodza do szafy";
+	printf("%s\n", szyfrogram);
+	szyfruj(szyfrogram);
+	printf("%s\n", szyfrogram);
 
 	return 0;
 }
