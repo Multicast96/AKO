@@ -38,7 +38,6 @@ int main() {
 
 
 	printf("**********ZAD20********\n");
-	printf("%d\n", sizeof(SYSTEM_INFO));
 	printf("Liczba procesorow: %d\n", liczba_procesorow());
 
 	printf("**********ZAD21********\n");
