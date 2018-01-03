@@ -42,8 +42,8 @@ int main() {
 	printf("Liczba procesorow: %d\n", liczba_procesorow());
 
 	printf("**********ZAD21********\n");
-	float l1 = 3243523452435;
-	float l2 = 23423532;
+	float l1 = FLT_MAX;
+	float l2 = 1;
 	printf("%g*%g=%.38g C\n", l1, l2, l1*l2);
 	printf("%g*%g=%.38g ASM\n", l1, l2, float_razy_float(l1, l2));
 
