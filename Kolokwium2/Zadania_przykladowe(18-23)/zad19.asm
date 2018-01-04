@@ -34,7 +34,7 @@ przesuwamy_w_lewo:
 
 obliczamy_wykladnik:
 	pop ecx
-	sub ecx,8
+	sub ecx,8 ;odleg³oœæ pierwszej jedynki od pozycji 2^0 w formacie mieszanym(pozycja 8) czyli nasz wyk³adnik
 	add ecx,127
 	and eax, 7FFFFFh ;usuniecie niejawnej jedynki
 	shl ecx, 23
