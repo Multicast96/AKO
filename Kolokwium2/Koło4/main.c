@@ -2,6 +2,7 @@
 
 unsigned int zamien_na_binarny(wchar_t *znaki);
 float szereg(unsigned int n);
+
 int main() {
 	printf("*******Zad1*******\n");
 	wchar_t *znaki = L"123";
