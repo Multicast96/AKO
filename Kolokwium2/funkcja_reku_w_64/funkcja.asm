@@ -2,7 +2,7 @@ public funkcja
 
 .data
 jeden dd 1.0
-dwa dd 2.0
+dwa dq 2.0
 .code
 
 funkcja PROC
@@ -29,7 +29,7 @@ funkcja PROC
 	fld dword PTR [rsp]
 
 	sub rsp,8 ;16 bajtow stos
-	movups [rsp],xmm0
+	movss dword PTR [rsp],xmm0
 	fld dword PTR [rsp] ;funkcja(n-1)
 	fsub ;st(0) = 1.2 - funkcja(n-1)
 
@@ -42,7 +42,7 @@ funkcja PROC
 	mov [rsp+8], rax
 	fstp dword PTR [rsp]
 
-	movups xmm0,[rsp]
+	movss xmm0, dword PTR [rsp]
 	add rsp,16
 	jmp koniec
 
@@ -51,7 +51,7 @@ return_jeden:
 	jmp koniec
 
 return_dwa:
-	movss xmm0, dwa
+	movq xmm0, dwa
 
 koniec:
 

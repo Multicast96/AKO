@@ -10,7 +10,7 @@ double c(int x) {
 float *testXYZ2R(float *tabCIEXYZ, int n) {
 	float *wsk = malloc(n * sizeof(float));
 	for (int i = 0; i < n; i++) {
-		wsk[i] = 3.063*tabCIEXYZ[i*3] - 1.393*tabCIEXYZ[i*3+1] - 0.476*tabCIEXYZ[i*3+2];
+		wsk[i] = (float)3.063*tabCIEXYZ[i*3] -(float)1.393*tabCIEXYZ[i*3+1] - (float)0.476*tabCIEXYZ[i*3+2];
 	}
 	return wsk;
 }

@@ -6,9 +6,9 @@ float funkcja_64(__int64 n) {
 	else return (1.2 - funkcja_64(n - 1)) / n;
 }
 
-extern float funkcja(__int64 n);
+extern float funkcja(__int64 n,int a,int b,int c,int d);
 int main() {
 	__int64 n = 10;
 	printf("Dla n=%ld funkcja = %f\n", n, funkcja_64(n));
-	printf("Dla n=%ld funkcja = %f\n", n, funkcja(n));
+	printf("Dla n=%ld funkcja = %f\n", n, funkcja(n,0,0,0,1));
 }
