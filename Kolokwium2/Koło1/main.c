@@ -17,8 +17,8 @@ int main() {
 	printf("ZAD3 = -2.0\n");
 	printf("QSort x64\n");
 
-	__int64 tab[] = { ULLONG_MAX , 354,21323 ,UINT_MAX, 1 };
-	__int64 n = sizeof(tab) / sizeof(unsigned __int64);
+	unsigned __int64 tab[] = { ULLONG_MAX , 354,21323,345,1,4235,2,424,1121,4234211,12132 ,UINT_MAX};
+	unsigned __int64 n = sizeof(tab) / sizeof(unsigned __int64);
 	for (int i = 0; i < n; i++)printf("%llu ", tab[i]);
 	printf("\n");
 	sort_int(tab, n);

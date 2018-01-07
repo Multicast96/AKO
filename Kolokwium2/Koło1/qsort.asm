@@ -10,7 +10,11 @@ cmp2 PROC
 	mov rax,1
 	cmp rcx,rdx
 	ja koniec
+	jb mniejsze
 	mov rax,0
+	jmp koniec
+mniejsze:
+	mov rax,-1
 koniec:
 	ret
 cmp2 ENDP
