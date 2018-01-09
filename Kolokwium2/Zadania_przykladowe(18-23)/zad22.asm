@@ -7,7 +7,8 @@ extern _qsort : PROC
 .code
 _cmp PROC
  ;parametry a i b
- ;a > b return 1
+ ;a > b return -1
+ ;a < b return 1
  ;else return 0
  push ebp
  mov ebp,esp
@@ -17,27 +18,28 @@ _cmp PROC
  mov ecx, [ebp+8];adres parametru a
  mov edx, [ebp+12];adres parametru b
 
- mov eax,1 ;wynik domyslnie 1
 
  mov esi, [ecx+4];starsza czesc parametru a
  mov edi, [edx+4];starsza czesc parametru b
 
  cmp esi,edi
- ja wynik_1 ;a > b
- jb wynik_0 ;a < b
+ ja a_wieksze ;a > b
+ jb b_wieksze ;a < b
 	mov esi,[ecx];mlodsza czesc parametru a
 	mov edi,[edx];mlodsza czesc parametru b
 
 	cmp esi,edi
-	ja wynik_1 ;a > b
-	jmp wynik_0 ;a <= b
+	ja a_wieksze ;a > b
+	jb b_wieksze ;a < b
+	mov eax,0 ;a == b
+	jmp koniec
 
-wynik_1:
+a_wieksze:
+	mov eax,-1
+	jmp koniec
+b_wieksze:
 	mov eax,1
-	jmp return
-wynik_0:
-	mov eax,0
-return:
+koniec:
  pop esi
  pop edi
  pop ebp

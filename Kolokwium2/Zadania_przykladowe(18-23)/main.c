@@ -47,7 +47,7 @@ int main() {
 	printf("%g*%g=%.38g ASM\n", l1, l2, float_razy_float(l1, l2));
 
 	printf("**********ZAD22********\n");
-	unsigned __int64 tab[] = { MAXULONGLONG-1,MAXULONGLONG-2, MAXULONGLONG,21,13,MAXULONGLONG / 2, MAXULONGLONG /4,MAXULONGLONG /8};
+	unsigned __int64 tab[] = { 1,332,35,5,1,1,1,MAXULONGLONG-1,MAXULONGLONG-2, MAXULONGLONG,21,13,MAXULONGLONG / 2, MAXULONGLONG /4,MAXULONGLONG /8};
 	for (int i = 0; i < sizeof(tab) / sizeof(__int64); i++) printf("%I64u ", tab[i]);
 	printf("\n");
 	unsigned __int64 max = sortowanie(tab, sizeof(tab) / sizeof(__int64));
